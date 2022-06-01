@@ -668,3 +668,32 @@ a += (b += c)
 
 ### 3.5 字符串
 
+String表示字符串类型，属于 **引用数据类型**，不属于基本数据类型。每个用双引号括起来的字符串都是String类的一个实例。
+
+
+
+#### 3.5.1 子串
+
+String类的**substring**方法可以从一个较大的字符串提取出一个子串。例如：
+
+```java
+/**
+     * 字符串：子串
+     */
+    @Test
+    public void test21() {
+        String greeting = "Hello";
+        String s = greeting.substring(0, 3);
+        System.out.println("s===" + s);
+        /**
+         * 输出：s===Hel
+         */
+    }
+```
+
+这样就创建了一个由“Hel”组成的字符串。
+
+
+
+#### 3.5.2 拼接
+

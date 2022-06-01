@@ -353,4 +353,17 @@ public class ShuJuLeiXing {
          */
     }
 
+    /**
+     * 字符串：子串
+     */
+    @Test
+    public void test21() {
+        String greeting = "Hello";
+        String s = greeting.substring(0, 3);
+        System.out.println("s===" + s);
+        /**
+         * 输出：s===Hel
+         */
+    }
+
 }
