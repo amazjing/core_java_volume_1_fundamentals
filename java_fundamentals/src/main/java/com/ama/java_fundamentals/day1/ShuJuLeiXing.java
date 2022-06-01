@@ -207,4 +207,150 @@ public class ShuJuLeiXing {
          */
     }
 
+    /**
+     * n++与++n是有区别
+     */
+    @Test
+    public void test12() {
+        int x = 2;
+        int y = x++;
+        System.out.println("x = " + x + " y = " + y);
+        /**
+         * 输出：x = 3 y = 2
+         */
+        int z = 2;
+        int w = ++z;
+        System.out.println("z = " + z + " w = " + w);
+        /**
+         * 输出：z = 3 w = 3
+         */
+    }
+
+    @Test
+    public void test13() {
+        int m = 7;
+        int n = 7;
+        int a = 2 * ++m;//a = 16,m = 8
+        int b = 2 * n++;//b = 14,n = 8
+        System.out.println("a = " + a + " b = " + b);
+        /**
+         * 输出：a = 16 b = 14
+         */
+    }
+
+    /**
+     * 关系和boolean运算符;
+     * &&与，||或，!非
+     */
+    @Test
+    public void test14() {
+        int x = 2;
+        int y = 3;
+        boolean b1 = x > y;
+        boolean b2 = x < y;
+        boolean b3 = x >= y;
+        boolean b4 = x <= y;
+        boolean b5 = x == y;
+        boolean b6 = x != y;
+        System.out.println("b1 = " + b1 + " b2 = " + b2 + " b3 = " + b3 + " b4 = " + b4 + " b5 = " + b5 + " b6 = " + b6);
+        /**
+         * 输出：b1 = false b2 = true b3 = false b4 = true b5 = false b6 = true
+         */
+    }
+
+    /**
+     * 逻辑运算符;
+     * &&与，||或的区别
+     * &&与：只有两个表达式都为true时，才返回true
+     * ||或：只要有一个表达式为true时，就返回true
+     */
+    @Test
+    public void test15() {
+        int x = 2;
+        int y = 3;
+        boolean b1 = x > y && x < y;
+        boolean b2 = x > y || x < y;
+        System.out.println("b1 = " + b1 + " b2 = " + b2);
+        /**
+         * 输出：b1 = false b2 = true
+         */
+    }
+
+    /**
+     * 三元运算符
+     * 当表达式为true时，返回第一个表达式的值;
+     * 当表达式为false时，返回第二个表达式的值
+     */
+    @Test
+    public void test16() {
+        int x = 2;
+        int y = 3;
+        int z = x > y ? x : y;
+        int w = x > y ? y : x;
+        System.out.println("z = " + z);
+        System.out.println("w = " + w);
+        /**
+         * 输出：z = 3 w = 2
+         */
+    }
+
+    /**
+     * 与运算符
+     */
+    @Test
+    public void test17() {
+        int a = 129;
+        int b = 128;
+        System.out.println("a和b的“与”的结果是：" + (a & b));
+        /*分析这个程序：
+        “a”的值是129，转换成二进制就是10000001，
+        而“b”的值是128，转换成二进制就是10000000。
+        根据与运算符的运算规律，只有两个位都是1，结果才是1，可以知道结果就是10000000，即128。
+        */
+    }
+
+    /**
+     * 或运算符
+     */
+    @Test
+    public void test18() {
+        int a = 129;
+        int b = 128;
+        System.out.println("a和b的“或”的结果是：" + (a | b));
+        /*分析这个程序段：
+        a的值是129，转换成二进制就是10000001，
+        而b的值是128，转换成二进制就是10000000，
+        根据或运算符的运算规律，只有两个位有一个是1，结果才是1，可以知道结果就是10000001，即129。
+        */
+    }
+
+    /**
+     * 异或运算符
+     */
+    @Test
+    public void test19() {
+        int a = 15;
+        int b = 2;
+        System.out.println("a与b的异或的结果是：" + (a ^ b));
+        /**
+         * 输出：a与b的异或的结果是：13
+         * 分析：a的值是15，转换成二进制为1111，
+         *      而b的值是2，转换成二进制为0010，
+         *      根据异或的运算规律，可以得出其结果为1101
+         *      即13
+         */
+    }
+
+    /**
+     * 非运算符
+     */
+    @Test
+    public void test20() {
+        int a = 2;
+        System.out.println("a的“非”的结果是：" + (~a));
+        /**
+         * 输出：a的“非”的结果是：-3
+         */
+    }
+
 }
