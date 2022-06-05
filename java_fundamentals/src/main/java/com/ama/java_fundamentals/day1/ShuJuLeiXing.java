@@ -64,6 +64,16 @@ public class ShuJuLeiXing {
         System.out.println("f = " + f);
 //        char g = 65536;//报错:java: 不兼容的类型: 从int转换到char可能会有损失
 //        System.out.println("g = " + g);
+        /**
+         * 输出：a = a
+         *      b = b
+         *      c = a
+         *      d = b
+         *      e = c
+         *      h = "
+         *      A的编码值是：65
+         *      f = ￿
+         */
     }
 
     /**
@@ -363,6 +373,191 @@ public class ShuJuLeiXing {
         System.out.println("s===" + s);
         /**
          * 输出：s===Hel
+         */
+    }
+
+    /**
+     * 字符串：拼接
+     */
+    @Test
+    public void test22() {
+        String s1 = "Hello";
+        String s2 = "World";
+        String s3 = s1 + s2;
+        System.out.println("s3===" + s3);
+        /**
+         * 输出：s3===HelloWorld
+         */
+    }
+
+    /**
+     * 当将一个字符串与一个非字符串的值进行拼接时，后者被转换成字符串。
+     */
+    @Test
+    public void test23() {
+        String s1 = "Hello";
+        int i = 100;
+        String s2 = s1 + i;
+        System.out.println("s2===" + s2);
+        /**
+         * 输出：s2===Hello1
+         */
+    }
+
+    /**
+     * 字符串：拼接
+     */
+    @Test
+    public void test24() {
+        String all = String.join("/", "S", "M", "L", "XL");
+        System.out.println("all===" + all);
+        /**
+         * 输出：all===S/M/L/XL
+         */
+    }
+
+    /**
+     * 字符串：比较区分大小写
+     */
+    @Test
+    public void test25() {
+        String s1 = "Hello";
+        String s2 = "Hello";
+        String s3 = "World";
+        String s4 = "world";
+        System.out.println("s1.equals(s2)===" + s1.equals(s2));
+        System.out.println("s1.equals(s3)===" + s1.equals(s3));
+        System.out.println("s3.equals(s4)===" + s3.equals(s4));
+        /**
+         * 输出：s1.equals(s2)===true
+         *      s1.equals(s3)===false
+         *      s3.equals(s4)===false
+         */
+    }
+
+    /**
+     * 字符串：比较不区分大小写
+     */
+    @Test
+    public void test26() {
+        String s1 = "Hello";
+        String s2 = "hello";
+        System.out.println("s1.equalsIgnoreCase(s2)===" + s1.equalsIgnoreCase(s2));
+        /**
+         * 输出：s1.equalsIgnoreCase(s2)===true
+         */
+    }
+
+    /**
+     * 字符串：判断是否为空
+     */
+    @Test
+    public void test27() {
+        String str = "";
+        if (str.length() == 0) {
+            System.out.println("length方法===str为空");
+        }
+        //或者
+        if (str.equals("")) {
+            System.out.println("equals---str为空");
+        }
+        //或者
+        if (str.isEmpty()) {
+            System.out.println("isEmpty===str为空");
+        }
+        /**
+         * 输出：length方法===str为空
+         *      equals---str为空
+         *      isEmpty===str为空
+         */
+    }
+
+    /**
+     * 字符串：判断是否为NULL
+     */
+    @Test
+    public void test28() {
+        String str = null;
+        if (str == null) {
+            System.out.println("str为null");
+        }
+        /**
+         * 输出：str为null
+         */
+    }
+
+    /**
+     * 字符串：既不是null也不为空串
+     */
+    @Test
+    public void test29() {
+        String str = "ama";
+        if (str != null && str.length() != 0) {
+            System.out.println("str不为null且不为空串");
+        }
+        /**
+         * 输出：str不为null且不为空串
+         */
+    }
+
+    /**
+     * 码点与代码单元
+     */
+    @Test
+    public void test30() {
+        String greeting = "Hello";
+        int n = greeting.length();
+        System.out.println("n===" + n);
+        /**
+         * 输出：n===5
+         */
+    }
+
+    /**
+     * 码点数量
+     */
+    @Test
+    public void test31() {
+        String greeting = "Hello";
+        int n = greeting.codePointCount(0, greeting.length());
+        System.out.println("n===" + n);
+        /**
+         * 输出：n===5
+         */
+    }
+
+    /**
+     * charAt方法返回指定码点的字符
+     */
+    @Test
+    public void test32() {
+        String greeting = "Hello";
+        char c = greeting.charAt(0);
+        char c1 = greeting.charAt(4);
+        System.out.println("c===" + c);
+        System.out.println("c1===" + c1);
+        /**
+         * 输出：c===H
+         *     c1===o
+         */
+    }
+
+    /**
+     * 第i个码点
+     */
+    @Test
+    public void test33() {
+        String greeting = "Hello";
+        int index = greeting.offsetByCodePoints(0, 2);
+        int cp = greeting.codePointAt(index);
+        System.out.println("index===" + index);
+        System.out.println("cp===" + cp);
+        char l ='l';
+        System.out.println("l===" + (int)l);
+        /**
+         * 输出：index===2
+         *      cp===108
+         *      l===108
          */
     }
 

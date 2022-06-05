@@ -697,3 +697,269 @@ String类的**substring**方法可以从一个较大的字符串提取出一个�
 
 #### 3.5.2 拼接
 
+Java语言允许使用**+**号连接(拼接)两个字符串。
+
+```java
+/**
+     * 字符串：拼接
+     */
+    @Test
+    public void test22() {
+        String s1 = "Hello";
+        String s2 = "World";
+        String s3 = s1 + s2;
+        System.out.println("s3===" + s3);
+        /**
+         * 输出：s3===HelloWorld
+         */
+    }
+```
+
+当将一个字符串与一个非字符串的值进行拼接时，后者被转换成字符串。
+
+```java
+/**
+     * 当将一个字符串与一个非字符串的值进行拼接时，后者被转换成字符串。
+     */
+    @Test
+    public void test23() {
+        String s1 = "Hello";
+        int i = 100;
+        String s2 = s1 + i;
+        System.out.println("s2===" + s2);
+        /**
+         * 输出：s2===Hello100
+         */
+    }
+```
+
+如果需要把多个字符串放在一起，用一个定界符分隔，可以使用静态join方法：
+
+```java
+/**
+     * 字符串：拼接
+     */
+    @Test
+    public void test24() {
+        String all = String.join("/", "S", "M", "L", "XL");
+        System.out.println("all===" + all);
+        /**
+         * 输出：all===S/M/L/XL
+         */
+    }
+```
+
+
+
+#### 3.5.3 不可变字符串
+
+String类没有提供用于修改字符串的方法。
+
+
+
+#### 3.5.4 检测字符串是否相等
+
+可以使用equals方法检测两个字符串是否相等
+
+**s.equals(t)**。
+
+如果字符串s与字符串t相等，则返回true；否则，返回false。
+
+```java
+/**
+     * 字符串：比较区分大小写
+     */
+    @Test
+    public void test25() {
+        String s1 = "Hello";
+        String s2 = "Hello";
+        String s3 = "World";
+        String s4 = "world";
+        System.out.println("s1.equals(s2)===" + s1.equals(s2));
+        System.out.println("s1.equals(s3)===" + s1.equals(s3));
+        System.out.println("s3.equals(s4)===" + s3.equals(s4));
+        /**
+         * 输出：s1.equals(s2)===true
+         *      s1.equals(s3)===false
+         *      s3.equals(s4)===false
+         */
+    }
+```
+
+
+
+检测两个字符串是否相等，而不区分大小写，可以使用**equalsIgnoreCase**方法
+
+```java
+/**
+     * 字符串：比较不区分大小写
+     */
+    @Test
+    public void test26() {
+        String s1 = "Hello";
+        String s2 = "hello";
+        System.out.println("s1.equalsIgnoreCase(s2)===" + s1.equalsIgnoreCase(s2));
+        /**
+         * 输出：s1.equalsIgnoreCase(s2)===true
+         */
+    }
+```
+
+一定不要使用**==**运算符检测两个字符串是否相等！这个运算符只能够确定两个字符串是否放在同一个位置上。
+
+
+
+#### 3.5.5 空串与NULL串
+
+空串“”是长度为0的字符串。可以调用以下代码检查一个字符串是否为空：
+
+```java
+/**
+     * 字符串：判断是否为空
+     */
+    @Test
+    public void test27() {
+        String str = "";
+        if (str.length() == 0) {
+            System.out.println("length方法===str为空");
+        }
+        //或者
+        if (str.equals("")) {
+            System.out.println("equals---str为空");
+        }
+        //或者
+        if (str.isEmpty()) {
+            System.out.println("isEmpty===str为空");
+        }
+        /**
+         * 输出：length方法===str为空
+         *      equals---str为空
+         *      isEmpty===str为空
+         */
+    }
+```
+
+空串是一个Java对象，有自己的串长度(0)和内容(空)。String变量还可以存放一个特殊的值，名为null。检查一个字符串是否为null，使用以下方法：
+
+```java
+/**
+     * 字符串：判断是否为NULL
+     */
+    @Test
+    public void test28() {
+        String str = null;
+        if (str == null) {
+            System.out.println("str为null");
+        }
+        /**
+         * 输出：str为null
+         */
+    }
+```
+
+检查一个字符串既不是null也不为空串，使用以下判断条件：
+
+```java
+/**
+     * 字符串：既不是null也不为空串
+     */
+    @Test
+    public void test29() {
+        String str = "ama";
+        if (str != null && str.length() != 0) {
+            System.out.println("str不为null且不为空串");
+        }
+        /**
+         * 输出：str不为null且不为空串
+         */
+    }
+```
+
+首先要检查str不为null。
+
+
+
+#### 3.5.6 码点与代码单元
+
+Java字符串有char值序列组成。char数据类型是一个采用UTF-16编码表示Unicode码点的代码单元。
+
+length()方法将返回采用UTF-16编码表示的是给定字符串所需要的代码单元数量。例如：
+
+```java
+/**
+     * 码点与代码单元
+     */
+    @Test
+    public void test30() {
+       String greeting = "Hello";
+       int n = greeting.length();
+       System.out.println("n===" + n);
+        /**
+         * 输出：n===5
+         */
+    }
+```
+
+想要得到实际的长度，即码点数量，可以调用：
+
+```java
+/**
+     * 码点数量
+     */
+    @Test
+    public void test31() {
+        String greeting = "Hello";
+        int n = greeting.codePointCount(0, greeting.length());
+        System.out.println("n===" + n);
+        /**
+         * 输出：n===5
+         */
+    }
+```
+
+调用s.charAt(n)将返回位置n的代码单元，n介于0~s.length()-1之间。例如：
+
+```java
+/**
+     * charAt方法返回指定码点的字符
+     */
+    @Test
+    public void test32() {
+        String greeting = "Hello";
+        char c = greeting.charAt(0);
+        char c1 = greeting.charAt(4);
+        System.out.println("c===" + c);
+        System.out.println("c1===" + c1);
+        /**
+         * 输出：c===H
+         *     c1===o
+         */
+    }
+```
+
+想要得到第i个码点，使用下列方法
+
+```java
+/**
+     * 第i个码点
+     */
+    @Test
+    public void test33() {
+        String greeting = "Hello";
+        int index = greeting.offsetByCodePoints(0, 2);
+        int cp = greeting.codePointAt(index);
+        System.out.println("index===" + index);
+        System.out.println("cp===" + cp);
+        char l ='l';
+        System.out.println("l===" + (int)l);
+        /**
+         * 输出：index===2
+         *      cp===108
+         *      l===108
+         */
+    }
+```
+
+
+
+#### 3.5.7 String API
